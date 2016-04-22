@@ -27,7 +27,7 @@ test-output/
 .project
 .settings/
 doc/
-.metadate/
+.metadata/
 conf.properties
 
 #Linux temp files
