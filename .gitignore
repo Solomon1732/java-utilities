@@ -28,6 +28,7 @@ test-output/
 .settings/
 doc/
 .metadata/
+.recommenders/
 conf.properties
 
 #Linux temp files
