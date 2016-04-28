@@ -53,10 +53,13 @@ public class PropertyFile {
 	}
 
 	/**
-	 * Set a property in the file
+	 * Set a property in the file.
+	 * 
+	 * Note that a call to this method erases any comments previously written
+	 * to the file.
 	 * @param value - the value of the property
-	 * @param comment - a comment for the property. If null in received, than no
-	 * comment is written
+	 * @param comment - a description of the property list. If null is
+	 * received, than no comment is written
 	 * @return the value previously stored in the property. If there was no
 	 * value, null is returned
 	 * @throws IOException
