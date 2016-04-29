@@ -1,4 +1,4 @@
-package com.solomon.androidphone;
+package com.sol.androidphone;
 
 import java.util.concurrent.TimeUnit;
 

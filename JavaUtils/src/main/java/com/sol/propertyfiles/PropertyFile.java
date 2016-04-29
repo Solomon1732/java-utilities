@@ -1,4 +1,4 @@
-package com.solomon.propertyfiles;
+package com.sol.propertyfiles;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Properties;
 
-import com.solomon.browser.BrowserPropertyConstants;
+import com.sol.browser.BrowserPropertyConstants;
 
 /**
  * A properties file manager. This class is a singleton. The class is
@@ -17,7 +17,7 @@ import com.solomon.browser.BrowserPropertyConstants;
  * @author Shlomi Reuveni
  * @since Dec 28 2015
  */
-public class PropertyFile {
+public final class PropertyFile {
 	/**
 	 * A Properties instance to manage the file
 	 */

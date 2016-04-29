@@ -1,4 +1,4 @@
-package com.solomon.factory;
+package com.sol.factory;
 
 import java.util.HashMap;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package com.solomon.browser;
+package com.sol.browser;
 
 /**
  * An enum containing the most common properties

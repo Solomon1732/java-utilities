@@ -1,15 +1,16 @@
-package com.solomon.arrays;
+package com.sol.arrays;
 
 /**
  * This class is a utility class used to swap two indexes of an array.
  * @author Shlomi Reuveni
  * @since Feb 9 2015
+ * @deprecated Use the class {@link ArrayHandler} instead.
  */
 public class SwapIndexes {
 
 	/**
 	 * Swap the contents of the two indexes.
-	 * @param array - the array to have it's indexes swapped
+	 * @param array - the array to have its indexes swapped
 	 * @param first - the first index to swap
 	 * @param second - the second index to swap
 	 */

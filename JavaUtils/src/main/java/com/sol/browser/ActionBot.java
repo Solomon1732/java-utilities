@@ -1,4 +1,4 @@
-package com.solomon.browser;
+package com.sol.browser;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.solomon.propertyfiles.PropertyFile;
+import com.sol.propertyfiles.PropertyFile;
 
 /**
  * An actionbot

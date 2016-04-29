@@ -1,14 +1,14 @@
-package com.solomon.arrays;
+package com.sol.arrays;
 
 import java.lang.reflect.Array;
 
 /**
- * A class that produces array instances for generic type arrays.
- * @author Shlomi Reuveni
- * @since Feb 9 2015
+ * A class for handling arrays.
+ * @author shlomi
+ * @since Apr 29 2016
  */
-public class GenericArrayInstance {
-	
+public class ArrayHandler {
+
 	/**
 	 * Receives an array and allocates a new array with the same type and
 	 * length. The same as
@@ -24,7 +24,7 @@ public class GenericArrayInstance {
 
 		return newArray;
 	}
-	
+
 	/**
 	 * Receives an array and allocates a new array with the same type as the
 	 * original array
@@ -44,6 +44,18 @@ public class GenericArrayInstance {
 		E[] newArray = (E[]) Array.newInstance(arrayClass, length);
 
 		return newArray;
-	}	
-	
+	}
+
+	/**
+	 * Swap the contents of the two indexes.
+	 * @param array - the array to have its indexes swapped
+	 * @param first - the first index to swap
+	 * @param second - the second index to swap
+	 */
+	public static <E> void swap(E[] array, int first, int second) {
+		E tmp = array[first];
+		array[first] = array[second];
+		array[second] = tmp;
+	}
+
 }

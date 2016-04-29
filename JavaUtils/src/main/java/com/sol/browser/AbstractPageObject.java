@@ -1,4 +1,4 @@
-package com.solomon.browser;
+package com.sol.browser;
 
 import org.openqa.selenium.WebDriver;
 

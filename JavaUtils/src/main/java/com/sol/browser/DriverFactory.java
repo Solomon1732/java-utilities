@@ -1,4 +1,4 @@
-package com.solomon.browser;
+package com.sol.browser;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import com.solomon.propertyfiles.PropertyFile;
+import com.sol.propertyfiles.PropertyFile;
 
 /**
  * A driver factory for the WebDriver object. Currently supports the Firefox
