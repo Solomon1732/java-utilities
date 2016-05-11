@@ -30,6 +30,7 @@ doc/
 .metadata/
 .recommenders/
 conf.properties
+copyrightLog.txt
 
 #Linux temp files
 .gitignore~
