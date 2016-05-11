@@ -98,24 +98,7 @@ public class ArrayHandler {
 			throws IllegalArgumentException {
 
 		if(!isIndexValid(array, index)) {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	/**
-	 * This method is identical to {@code #requireValidIndex(Object[], int)}
-	 * except that the parameter {@code index}, is of type {@code long} instead
-	 * of {@code int}.
-	 * @param array - array that is used for validation
-	 * @param index - index that is checked against this array
-	 * @throws IllegalArgumentException if {@code index < 0} or
-	 * {@code index > (array.length - 1)}
-	 */
-	public static <E> void requireValidIndex(E[] array, long index)
-			throws IllegalArgumentException {
-
-		if(!isIndexValid(array, index)) {
-			throw new IllegalArgumentException();
+			throw new IndexOutOfBoundsException();
 		}
 	}
 
@@ -135,16 +118,4 @@ public class ArrayHandler {
 		return  index >= 0 | index < array.length;
 	}
 
-	/**
-	 * This method is identical to {@code #isIndexValid(Object[], int)}
-	 * except that the parameter {@code index}, is of type {@code long} instead
-	 * of {@code int}.
-	 * @param array - array that is used for validation
-	 * @param index - index that is checked against this array
-	 * @return true if the provided index is valid for the provided array
-	 * otherwise false
-	 */
-	public static <E> boolean isIndexValid(E[] array, long index) {
-		return  index >= 0 | index < array.length;
-	}
 }

@@ -56,7 +56,8 @@ public class DriverFactory {
 	 * <br><b>Note:</b> The following keys <em>must</em> be present in the
 	 * properties file (and containing values): the <em>absolute</em> path
 	 * to the requested WebDriver (in case of ChromeDriver), and the default
-	 * waiting time for the implicit wait
+	 * waiting time for the implicit wait. Missing keys may cause undefined
+	 * behavior.
 	 */
 	public static WebDriver getDriver(final DriverType browser)
 					throws FileNotFoundException, IOException, NullPointerException {

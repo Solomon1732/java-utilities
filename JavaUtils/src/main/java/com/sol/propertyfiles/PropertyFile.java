@@ -101,7 +101,7 @@ public final class PropertyFile {
 	 * @param key - the name of the property which holds the value
 	 * @return a string containing the value of the property. The method
 	 * returns null if the property is not found
-	 * @throws IOException 
+	 * @throws IOException
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException if the {@code key} is {@code null}
 	 */
