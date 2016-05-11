@@ -1,5 +1,6 @@
 package com.sol.androidphone;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Dimension;
@@ -10,7 +11,7 @@ import io.appium.java_client.android.AndroidDriver;
 /**
  * An {@code actionbot} for use with {@link AbstractAndroidPageObject}
  * @author Shlomi Reuveni
- *
+ * @version %I%, %G%
  */
 public class ActionBot {
 	/**
@@ -19,13 +20,13 @@ public class ActionBot {
 	private final AndroidDriver<WebElement> driver;
 
 	public ActionBot(AndroidDriver<WebElement> driver) {
-		this.driver = driver;
+		this.driver = Objects.requireNonNull(driver);
 	}
 
 	/**
 	 * Type text into the specified element
-	 * @param element - the element to be typed into
-	 * @param textToType the text to be typed
+	 * @param element - element to be typed into
+	 * @param textToType - text to be typed
 	 */
 	public void type(final WebElement element, final String textToType) {
 		element.clear();
@@ -34,8 +35,8 @@ public class ActionBot {
 
 	/**
 	 * Type text into the specified element
-	 * @param element - the element to be typed into
-	 * @param textToType - the text to be typed
+	 * @param element - element to be typed into
+	 * @param textToType - text to be typed
 	 * @param toClearBefore - if true the element will be cleared before typing
 	 * (as in the method clear()). false indicates that the method will not be
 	 * cleared
@@ -51,10 +52,10 @@ public class ActionBot {
 	/**
 	 * Scroll down to the desired element. After the element is found (assuming
 	 * no exception was thrown) the implicit waiting time is set to 30 seconds.
-	 * @param elementxPath - the xpath to the element
-	 * @param initialSleepingTime - the initial sleeping time in milliseconds
+	 * @param elementxPath - xpath to the element
+	 * @param initialSleepingTime - initial sleeping time in milliseconds
 	 * before starting the search
-	 * @return
+	 * @return the element that is searched for
 	 */
 	public WebElement scrollDownToElement(String elementxPath,
 			long initialSleepingTime) {
@@ -82,11 +83,13 @@ public class ActionBot {
 
 	/**
 	 * Set an implicit waiting time
-	 * @param time the time for the implicit wait
-	 * @param unit the unit for the waiting time (seconds, nanoseconds, minutes,
+	 * @param time - time for the implicit wait
+	 * @param unit - unit for the waiting time (seconds, nanoseconds, minutes,
 	 * etc.)
 	 */
 	private void implicitwait(long time, TimeUnit unit) {
+		assert time >= 0 : "Time is a negetive value!";
+		assert null != unit;
 		driver.manage().timeouts().implicitlyWait(time, unit);
 	}
 

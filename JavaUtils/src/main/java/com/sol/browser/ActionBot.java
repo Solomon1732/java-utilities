@@ -2,6 +2,7 @@ package com.sol.browser;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -16,6 +17,7 @@ import com.sol.propertyfiles.PropertyFile;
 /**
  * An actionbot
  * @author Shlomi Reuveni
+ * @version %I%, %G%
  * @since Dec 22 2015
  */
 public class ActionBot {
@@ -24,16 +26,16 @@ public class ActionBot {
 
 	/**
 	 * A constructor for the actionbot
-	 * @param driver - the Webdriver instance used by the actionbot to manipulate
+	 * @param driver - Webdriver instance used by the actionbot to manipulate
 	 * pages
 	 */
 	public ActionBot(WebDriver driver) {
-		this.driver = driver;
+		this.driver = Objects.requireNonNull(driver);
 	}
 
 	/**
 	 * Click on an element specified by the locator
-	 * @param locator - the locator of the element to be clicked
+	 * @param locator - locator of the element to be clicked
 	 */
 	public void click(By locator) {
 		driver.findElement(locator).click();
@@ -41,7 +43,7 @@ public class ActionBot {
 
 	/**
 	 * Submit an element (usually by clicking on it)
-	 * @param locator - the locator of the element to be submitted
+	 * @param locator - locator of the element to be submitted
 	 */
 	public void submit(By locator) {
 		driver.findElement(locator).submit();
@@ -49,7 +51,7 @@ public class ActionBot {
 
 	/**
 	 * Locates an element in the page
-	 * @param locator - the locator of the element to be located
+	 * @param locator - locator of the element to be located
 	 * @return the element found
 	 */
 	public WebElement findElement(By locator) {
@@ -58,7 +60,7 @@ public class ActionBot {
 
 	/**
 	 * A method to check if the current page is a page containing the element
-	 * @param locator - a locator to check if the current page is the page the
+	 * @param locator - locator to check if the current page is the page the
 	 * element is located in
 	 * @return true if the element is found; otherwise false
 	 * <br><b>Note:</b> if the element is not a unique element (e.g. tagName)
@@ -71,8 +73,8 @@ public class ActionBot {
 	/**
 	 * Used to locate and select an element in a page (for example, in a table
 	 * in the page)
-	 * @param locator - the locator of the element to be selected
-	 * @param value a String that is the value to be selected
+	 * @param locator - locator of the element to be selected
+	 * @param value  - String that is the value to be selected
 	 */
 	public void selectByValue(By locator, String value) {
 		new Select(driver.findElement(locator)).selectByValue(value);
@@ -81,8 +83,8 @@ public class ActionBot {
 	/**
 	 * Used to locate and select an element in a page (for example, in a table
 	 * in the page)
-	 * @param locator - the locator of the element to be selected
-	 * @param text a String containing the visible text of the option to be
+	 * @param locator - locator of the element to be selected
+	 * @param text - String containing the visible text of the option to be
 	 * selected
 	 */
 	public void selectByVisibleText(By locator, String text) {
@@ -92,9 +94,9 @@ public class ActionBot {
 	/**
 	 * Type something into an input field. WebDriver doesn't normally clear these
 	 * before typing, so this method does that first.
-	 * @param locator - the locator of the element to be typed into (e.g. search
+	 * @param locator - locator of the element to be typed into (e.g. search
 	 * bar)
-	 * @param text - the text to be written into the element
+	 * @param text - text to be written into the element
 	 */
 	public void type(By locator, String text) { 
 		WebElement element = driver.findElement(locator);
@@ -105,7 +107,7 @@ public class ActionBot {
 	/**
 	 * Checks if the element specified by the locator parameter exists in the
 	 * page
-	 * @param locator - the locator of the element to be located
+	 * @param locator - locator of the element to be located
 	 * @return true if the element is located; otherwise false
 	 */
 	public boolean isElementPresent(By locator) {
@@ -121,13 +123,15 @@ public class ActionBot {
 
 	/**
 	 * Sets an explicit waiting time
-	 * @param waitingTimeInMillis - the waiting time in milliseconds
-	 * @param expectedCondition - the expected condition with which the wait is set by
+	 * @param waitingTimeInMillis - waiting time in milliseconds
+	 * @param expectedCondition - expected condition with which the wait is set by
 	 * @throws FileNotFoundException - if the properties file is not found
 	 * @throws IOException
+	 * @throws NullPointerException if {@code expectedCondition} is {@code null}
 	 */
 	public void explicitWait(long waitingTimeInMillis, ExpectedCondition<Boolean> expectedCondition)
-			throws FileNotFoundException, IOException {
+			throws FileNotFoundException, IOException, NullPointerException {
+		Objects.requireNonNull(expectedCondition);
 		//Sets implicit wait at 0
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 

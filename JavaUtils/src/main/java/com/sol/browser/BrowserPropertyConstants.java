@@ -3,6 +3,7 @@ package com.sol.browser;
 /**
  * An enum containing the most common properties
  * @author Shlomi Reuveni
+ * @version %I%, %G%
  * @since Dec 29 2015
  */
 public enum BrowserPropertyConstants {
@@ -12,6 +13,7 @@ public enum BrowserPropertyConstants {
 	private final String value;
 
 	private BrowserPropertyConstants(final String value) {
+		assert null != value : "value is null!";
 		this.value = value;
 	}
 	

@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 import com.sol.browser.BrowserPropertyConstants;
@@ -15,6 +16,7 @@ import com.sol.browser.BrowserPropertyConstants;
  * This class can be modifies by replacing the enum type and the property file name this class uses by
  * default.
  * @author Shlomi Reuveni
+ * @version %I%, %G%
  * @since Dec 28 2015
  */
 public final class PropertyFile {
@@ -30,7 +32,6 @@ public final class PropertyFile {
 	/**
 	 * An instance holder. Used for lazy initialization
 	 * @author Shlomi Reuveni
-	 * @since Jan 5 2016
 	 */
 	private static class InstanceHolder {
 		/**
@@ -57,15 +58,18 @@ public final class PropertyFile {
 	 * 
 	 * Note that a call to this method erases any comments previously written
 	 * to the file.
-	 * @param value - the value of the property
+	 * @param value - value of the property
 	 * @param comment - a description of the property list. If null is
 	 * received, than no comment is written
 	 * @return the value previously stored in the property. If there was no
 	 * value, null is returned
 	 * @throws IOException
+	 * @throws NullPointerException if either {@code key} or {@code value} is
+	 * {@code null}
 	 */
 	public String setProperty(BrowserPropertyConstants key, String value,
-			String comment) throws IOException {
+			String comment) throws IOException, NullPointerException {
+		Objects.requireNonNull(key);
 
 		String previousValue = (String) PROPERTIES.setProperty(key.getPropertyValue(), value);
 
@@ -84,8 +88,11 @@ public final class PropertyFile {
 	 * returns null if the property is not found
 	 * @throws IOException 
 	 * @throws FileNotFoundException
+	 * @throws NullPointerException if the {@code key} is {@code null}
 	 */
-	public String getProperty(BrowserPropertyConstants key) throws IOException, FileNotFoundException {
+	public String getProperty(BrowserPropertyConstants key)
+			throws IOException, FileNotFoundException, NullPointerException {
+		Objects.requireNonNull(key);
 		String property = null;
 
 		if(!(new File("conf.properties")).exists()) {
