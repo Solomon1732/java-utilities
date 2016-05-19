@@ -15,7 +15,8 @@
  *******************************************************************************/
 package com.sol.propertyfiles;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -34,7 +35,7 @@ import com.sol.browser.BrowserPropertyConstants;
  * @version %I%, %G%
  * @since Dec 28 2015
  */
-public final class PropertyFile {
+public final class BrowserPropertyFile {
 	/**
 	 * A Properties instance to manage the file
 	 */
@@ -52,19 +53,19 @@ public final class PropertyFile {
 		/**
 		 * A singleton instance of the class
 		 */
-		private static final PropertyFile INSTANCE = new PropertyFile();
+		private static final BrowserPropertyFile INSTANCE = new BrowserPropertyFile();
 	}
 
 	/**
 	 * An overwriting of the default class constructor
 	 */
-	private PropertyFile() { }
+	private BrowserPropertyFile() { }
 
 	/**
 	 * Get an instance of the class
 	 * @return a reference for an instance of the class
 	 */
-	public static PropertyFile getInstance() {
+	public static BrowserPropertyFile getInstance() {
 		return InstanceHolder.INSTANCE;
 	}
 
@@ -84,11 +85,13 @@ public final class PropertyFile {
 	 */
 	public String setProperty(BrowserPropertyConstants key, String value,
 			String comment) throws IOException, NullPointerException {
-		Objects.requireNonNull(key);
+		Objects.requireNonNull(key, "Key is null");
+		Objects.requireNonNull(value, "Value is null");
 
 		String previousValue = (String) PROPERTIES.setProperty(key.getPropertyValue(), value);
 
-		try (FileWriter writer = new FileWriter(FILE_NAME)) {
+		try (BufferedWriter writer =
+				new BufferedWriter(new FileWriter(FILE_NAME))) {
 			PROPERTIES.store(writer, comment);
 		} catch (IOException e) {
 			throw e;
@@ -107,14 +110,11 @@ public final class PropertyFile {
 	 */
 	public String getProperty(BrowserPropertyConstants key)
 			throws IOException, FileNotFoundException, NullPointerException {
-		Objects.requireNonNull(key);
+		Objects.requireNonNull(key, "Key is null");
 		String property = null;
 
-		if(!(new File("conf.properties")).exists()) {
-			throw new FileNotFoundException();
-		}
-
-		try (FileReader reader = new FileReader(FILE_NAME)) {
+		try (BufferedReader reader =
+				new BufferedReader(new FileReader(FILE_NAME))) {
 			PROPERTIES.load(reader);
 			property = PROPERTIES.getProperty(key.getPropertyValue());
 		} catch (IOException e) {

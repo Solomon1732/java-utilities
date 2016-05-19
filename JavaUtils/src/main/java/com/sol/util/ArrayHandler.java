@@ -18,6 +18,8 @@ package com.sol.util;
 import java.lang.reflect.Array;
 import java.util.Objects;
 
+import com.google.common.base.Supplier;
+
 /**
  * A class for handling arrays.
  * @author shlomi
@@ -26,15 +28,18 @@ import java.util.Objects;
  */
 public class ArrayHandler {
 
+    /**
+     * Constructor.  Class ArrayHandler is not instantiable.
+     */
 	private ArrayHandler() { }
 
 	/**
-	 * Receives an array and allocates a new array with the same type and
+	 * Receives an array and creates a new array with the same type and
 	 * length. Similar to
 	 * {@code getArrayInstance(someArray, someArray.length)}
 	 * @param array - array used as the class for the new array.
 	 * @return - A newly allocated array with the same type as the input array.
-	 * @throws NullPointerException if {@code array} is {@code null}
+	 * @throws NullPointerException - if {@code array} is {@code null}
 	 */
 	public static <E> E[] getArrayInstance(E[] array) throws NullPointerException {
 		Class<?> arrayClass = Objects.requireNonNull(array).getClass().getComponentType();
@@ -46,18 +51,19 @@ public class ArrayHandler {
 	}
 
 	/**
-	 * Receives an array and allocates a new array with the same type as the
+	 * Receives an array and creates a new array with the same type as the
 	 * original array
 	 * @param array - array used as the class for the new array.
 	 * @param length - length for the new array.
 	 * @return - A newly allocated array with the same type as the input array.
-	 * @throws IllegalArgumentException for {@code length < 0}
-	 * @throws NullPointerException if {@code array} is {@code null}
+	 * @throws IllegalArgumentException - for {@code length < 0}
+	 * @throws NullPointerException - if {@code array} is {@code null}
 	 */
 	public static <E> E[] getArrayInstance(E[] array, int length)
-			throws IllegalArgumentException, NullPointerException {
-		if(0 > length) {
-			throw new IllegalArgumentException();
+			throws NegativeArraySizeException, NullPointerException {
+		
+		if(length < 0) {
+			throw new NegativeArraySizeException();
 		}
 		Class<?> arrayClass = Objects.requireNonNull(array).getClass().getComponentType();
 
@@ -74,8 +80,6 @@ public class ArrayHandler {
 	 * @param second - second index to swap
 	 */
 	public static <E> void swap(E[] array, int first, int second) {
-		requireValidIndex(array, first);
-		requireValidIndex(array, second);
 		E tmp = array[first];
 		array[first] = array[second];
 		array[second] = tmp;
@@ -86,16 +90,16 @@ public class ArrayHandler {
 	 * for doing parameter validation in methods and constructors, as
 	 * demonstrated below:
 	 * {@code public Foo(Bar[] array, int index) {
-	 * 		ArrayHandler(array, index);
+	 * 		ArrayHandler.requireValidIndex(array, index);
 	 * 		this.bar = array[index];
 	 * }}
 	 * @param array - array that is used for validation
 	 * @param index - index that is checked against this array
-	 * @throws IllegalArgumentException if {@code index < 0} or
+	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
 	 * {@code index > (array.length - 1)}
 	 */
-	public static <E> void requireValidIndex(E[] array, int index)
-			throws IllegalArgumentException {
+	public static void requireValidIndex(Object[] array, int index)
+			throws IndexOutOfBoundsException {
 
 		if(!isIndexValid(array, index)) {
 			throw new IndexOutOfBoundsException();
@@ -103,19 +107,68 @@ public class ArrayHandler {
 	}
 
 	/**
+	 * Checks that the specified index is valid. This method is designed primarily
+	 * for doing parameter validation in methods and constructors, as
+	 * demonstrated below:
+	 * {@code public Foo(Bar[] array, int index) {
+	 * 		ArrayHandler.requireValidIndex(array, index);
+	 * 		this.bar = array[index];
+	 * }}
+	 * @param array - array that is used for validation
+	 * @param index - index that is checked against this array
+	 * @param message - detail message to be used in the event that an
+	 * {@code IndexOutOfBoundsException} is thrown
+	 * @return 
+	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
+	 * {@code index > (array.length - 1)}
+	 */
+	public static void requireValidIndex(Object[] array, int index, String message)
+			throws IndexOutOfBoundsException {
+
+		if(!isIndexValid(array, index)) {
+			throw new IndexOutOfBoundsException(message);
+		}
+	}
+
+	/**
+	 * Checks that the specified index is valid. This method is designed primarily
+	 * for doing parameter validation in methods and constructors, as
+	 * demonstrated below:
+	 * {@code public Foo(Bar[] array, int index) {
+	 * 		ArrayHandler.requireValidIndex(array, index);
+	 * 		this.bar = array[index];
+	 * }}
+	 * @param <E>
+	 * @param array - array that is used for validation
+	 * @param index - index that is checked against this array
+	 * @param messageSupplier
+	 * @return 
+	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
+	 * {@code index > (array.length - 1)}
+	 */
+	public static void requireValidIndex(Object[] array, int index,
+			Supplier<String> messageSupplier) throws IndexOutOfBoundsException {
+
+		if(!isIndexValid(array, index)) {
+			throw new IndexOutOfBoundsException(messageSupplier.get());
+		}
+	}
+
+
+	/**
 	 * Returns true if provided index is valid for the provided array, otherwise
 	 * return false.
-	 * The index is considered valid if and only if {@code index >= 0}
-	 * and {@code index < array.length} (the last part is because the last
-	 * index of any array is array.length - 1, therefore the index needs to be
-	 * smaller that the length of the array).
+	 * The index is considered valid if and only if {@code index >= 0
+	 * && index < array.length} (the last part is because the last index of any
+	 * array is array.length - 1, therefore the index needs to be smaller that
+	 * the length of the array).
 	 * @param array - array that is used for validation
 	 * @param index - index that is checked against this array
 	 * @return true if the provided index is valid for the provided array
 	 * otherwise false
 	 */
-	public static <E> boolean isIndexValid(E[] array, int index) {
-		return  index >= 0 | index < array.length;
+	public static boolean isIndexValid(Object[] array, int index) {
+		return  0 <= index & index < array.length;
 	}
 
 }

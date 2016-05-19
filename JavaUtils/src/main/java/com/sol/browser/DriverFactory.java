@@ -25,7 +25,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import com.sol.propertyfiles.PropertyFile;
+import com.sol.propertyfiles.BrowserPropertyFile;
 
 /**
  * A driver factory for the WebDriver object. Currently supports the Firefox
@@ -45,32 +45,37 @@ public class DriverFactory {
 	}
 
 	/**
-	 * Returns an instance of the requested WebDriver. Null in case of an
-	 * invalid name
-	 * @param browser - name of the requested driver
+	 * Returns an instance of the requested WebDriver.
+	 * This method also sets the implicite waiting time according to the
+	 * property in the property file.
+	 * @param driverType - name of the requested driver
 	 * @return if the requested driver is valid, returns an instant of the
 	 * requested driver. If the requested driver is invalid, null is returned.
 	 * @throws FileNotFoundException if property file is not found
 	 * @throws IOException
 	 * @throws NullPointerException if {@code browser} is {@code null}
+	 * @throws IllegalArgumentException if the driver type is not one of the
+	 * following: Chrome, Firefox, or HTMLUnit.
 	 * <br><b>Note:</b> The following keys <em>must</em> be present in the
 	 * properties file (and containing values): the <em>absolute</em> path
 	 * to the requested WebDriver (in case of ChromeDriver), and the default
 	 * waiting time for the implicit wait. Missing keys may cause undefined
 	 * behavior.
+	 * @see BrowserPropertyFile
 	 */
-	public static WebDriver getDriver(final DriverType browser)
-					throws FileNotFoundException, IOException, NullPointerException {
-		Objects.requireNonNull(browser);
+	public static WebDriver getDriver(final DriverType driverType)
+			throws FileNotFoundException, IOException, NullPointerException,
+			IllegalArgumentException {
 
+		Objects.requireNonNull(driverType);
 		WebDriver driver = null;
-		PropertyFile properties = PropertyFile.getInstance();
-		String pathToDriver = properties.getProperty(BrowserPropertyConstants.PATH_TO_DRIVER);
+		BrowserPropertyFile properties = BrowserPropertyFile.getInstance();
 
-		switch (browser) {
+		switch (driverType) {
 			case CHROME:
-				System.setProperty("webdriver.chrome.driver",
-						pathToDriver);
+				String pathToDriver =
+					properties.getProperty(BrowserPropertyConstants.PATH_TO_DRIVER);
+				System.setProperty("webdriver.chrome.driver", pathToDriver);
 				driver = new ChromeDriver();
 				break;
 			case FIREFOX:
@@ -80,7 +85,7 @@ public class DriverFactory {
 				driver = new HtmlUnitDriver();
 				break;
 			default:
-				break;
+				throw new IllegalArgumentException("Illegal driver type");
 		}
 
 		String waitingTime = properties.getProperty(BrowserPropertyConstants.IMPLICITE_WAITING_TIME);

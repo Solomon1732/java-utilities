@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *******************************************************************************/
-package com.sol.util;
+package com.sol.util.reference;
 
 import java.lang.ref.Reference;
 import java.lang.ref.SoftReference;
@@ -23,7 +23,7 @@ import java.util.Optional;
 
 /**
  * Abstract base class for reference containers. This class defers from the
- * reference classes in package {@link java.land.ref} in that this class
+ * reference classes in package {@link java.lang.ref} in that this class
  * return an {@link Optional} object, instead of returning the contained instance,
  * or returning {@code null} if the object has been collected by the garbage
  * collector.

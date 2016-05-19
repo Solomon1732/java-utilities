@@ -27,7 +27,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.sol.propertyfiles.PropertyFile;
+import com.sol.propertyfiles.BrowserPropertyFile;
 
 /**
  * An actionbot
@@ -37,7 +37,7 @@ import com.sol.propertyfiles.PropertyFile;
  */
 public class ActionBot {
 	private final WebDriver driver;
-	private static final PropertyFile properties = PropertyFile.getInstance();
+	private static final BrowserPropertyFile properties = BrowserPropertyFile.getInstance();
 
 	/**
 	 * A constructor for the actionbot
