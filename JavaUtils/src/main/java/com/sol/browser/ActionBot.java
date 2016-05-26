@@ -44,7 +44,7 @@ public class ActionBot {
 	 * @param driver - Webdriver instance used by the actionbot to manipulate
 	 * pages
 	 */
-	public ActionBot(WebDriver driver) {
+	public ActionBot(final WebDriver driver) {
 		this.driver = Objects.requireNonNull(driver);
 	}
 
@@ -52,7 +52,7 @@ public class ActionBot {
 	 * Click on an element specified by the locator
 	 * @param locator - locator of the element to be clicked
 	 */
-	public void click(By locator) {
+	public void click(final By locator) {
 		driver.findElement(locator).click();
 	}
 
@@ -60,7 +60,7 @@ public class ActionBot {
 	 * Submit an element (usually by clicking on it)
 	 * @param locator - locator of the element to be submitted
 	 */
-	public void submit(By locator) {
+	public void submit(final By locator) {
 		driver.findElement(locator).submit();
 	}
 
@@ -69,7 +69,7 @@ public class ActionBot {
 	 * @param locator - locator of the element to be located
 	 * @return the element found
 	 */
-	public WebElement findElement(By locator) {
+	public WebElement findElement(final By locator) {
 		return driver.findElement(locator);
 	}
 
@@ -81,7 +81,7 @@ public class ActionBot {
 	 * <br><b>Note:</b> if the element is not a unique element (e.g. tagName)
 	 * it may result in undefined behavior
 	 */
-	public boolean isPage(By locator) {
+	public boolean isPage(final By locator) {
 		return !driver.findElements(locator).isEmpty();
 	}
 
@@ -91,7 +91,7 @@ public class ActionBot {
 	 * @param locator - locator of the element to be selected
 	 * @param value  - String that is the value to be selected
 	 */
-	public void selectByValue(By locator, String value) {
+	public void selectByValue(final By locator, final String value) {
 		new Select(driver.findElement(locator)).selectByValue(value);
 	}
 
@@ -102,7 +102,7 @@ public class ActionBot {
 	 * @param text - String containing the visible text of the option to be
 	 * selected
 	 */
-	public void selectByVisibleText(By locator, String text) {
+	public void selectByVisibleText(final By locator, final String text) {
 		new Select(driver.findElement(locator)).selectByVisibleText(text);;
 	}
 
@@ -113,7 +113,7 @@ public class ActionBot {
 	 * bar)
 	 * @param text - text to be written into the element
 	 */
-	public void type(By locator, String text) { 
+	public void type(final By locator, final String text) { 
 		WebElement element = driver.findElement(locator);
 		element.clear();
 		element.sendKeys(text);
@@ -125,7 +125,7 @@ public class ActionBot {
 	 * @param locator - locator of the element to be located
 	 * @return true if the element is located; otherwise false
 	 */
-	public boolean isElementPresent(By locator) {
+	public boolean isElementPresent(final By locator) {
 		return this.isPage(locator);
 	}
 
@@ -144,7 +144,7 @@ public class ActionBot {
 	 * @throws IOException
 	 * @throws NullPointerException if {@code expectedCondition} is {@code null}
 	 */
-	public void explicitWait(long waitingTimeInMillis, ExpectedCondition<Boolean> expectedCondition)
+	public void explicitWait(final long waitingTimeInMillis, final ExpectedCondition<Boolean> expectedCondition)
 			throws FileNotFoundException, IOException, NullPointerException {
 		Objects.requireNonNull(expectedCondition);
 		//Sets implicit wait at 0

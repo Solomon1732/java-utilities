@@ -36,16 +36,16 @@ import java.util.Optional;
  */
 public abstract class ReferenceContainer<T> {
 
-	/**
+	/*
 	 * This is a stored {@code Reference} instance.
 	 */
-	protected final Reference<T> reference;
+	private final Reference<T> reference;
 
 	/**
 	 * Stores the given reference in a new instance of this class
 	 * @param reference - the reference to be stored
 	 */
-	protected ReferenceContainer(Reference<T> reference) {
+	protected ReferenceContainer(final Reference<T> reference) {
 		assert null != reference : "This reference object is null!";
 		this.reference = Objects.requireNonNull(reference);
 	}

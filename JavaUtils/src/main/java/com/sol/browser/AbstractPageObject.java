@@ -39,7 +39,7 @@ public abstract class AbstractPageObject {
 	 * A constructor
 	 * @param driver - driver used to manipulate the page
 	 */
-	public AbstractPageObject(WebDriver driver) {
+	public AbstractPageObject(final WebDriver driver) {
 		this.driver = Objects.requireNonNull(driver);
 		actionbot = new ActionBot(driver);
 	}

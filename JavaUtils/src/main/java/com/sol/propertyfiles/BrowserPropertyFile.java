@@ -83,8 +83,8 @@ public final class BrowserPropertyFile {
 	 * @throws NullPointerException if either {@code key} or {@code value} is
 	 * {@code null}
 	 */
-	public String setProperty(BrowserPropertyConstants key, String value,
-			String comment) throws IOException, NullPointerException {
+	public String setProperty(final BrowserPropertyConstants key, final String value,
+			final String comment) throws IOException, NullPointerException {
 		Objects.requireNonNull(key, "Key is null");
 		Objects.requireNonNull(value, "Value is null");
 
@@ -108,7 +108,7 @@ public final class BrowserPropertyFile {
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException if the {@code key} is {@code null}
 	 */
-	public String getProperty(BrowserPropertyConstants key)
+	public String getProperty(final BrowserPropertyConstants key)
 			throws IOException, FileNotFoundException, NullPointerException {
 		Objects.requireNonNull(key, "Key is null");
 		String property = null;

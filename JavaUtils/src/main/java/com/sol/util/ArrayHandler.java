@@ -98,7 +98,7 @@ public class ArrayHandler {
 	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
 	 * {@code index > (array.length - 1)}
 	 */
-	public static void requireValidIndex(Object[] array, int index)
+	public static void requireValidIndex(final Object[] array, final int index)
 			throws IndexOutOfBoundsException {
 
 		if(!isIndexValid(array, index)) {
@@ -122,8 +122,8 @@ public class ArrayHandler {
 	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
 	 * {@code index > (array.length - 1)}
 	 */
-	public static void requireValidIndex(Object[] array, int index, String message)
-			throws IndexOutOfBoundsException {
+	public static void requireValidIndex(final Object[] array,
+			final int index, String message) throws IndexOutOfBoundsException {
 
 		if(!isIndexValid(array, index)) {
 			throw new IndexOutOfBoundsException(message);
@@ -146,8 +146,8 @@ public class ArrayHandler {
 	 * @throws IndexOutOfBoundsException - if {@code index < 0} or
 	 * {@code index > (array.length - 1)}
 	 */
-	public static void requireValidIndex(Object[] array, int index,
-			Supplier<String> messageSupplier) throws IndexOutOfBoundsException {
+	public static void requireValidIndex(final Object[] array, final int index,
+			final Supplier<String> messageSupplier) throws IndexOutOfBoundsException {
 
 		if(!isIndexValid(array, index)) {
 			throw new IndexOutOfBoundsException(messageSupplier.get());
@@ -167,7 +167,7 @@ public class ArrayHandler {
 	 * @return true if the provided index is valid for the provided array
 	 * otherwise false
 	 */
-	public static boolean isIndexValid(Object[] array, int index) {
+	public static boolean isIndexValid(final Object[] array, final int index) {
 		return  0 <= index & index < array.length;
 	}
 

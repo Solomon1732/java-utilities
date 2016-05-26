@@ -39,7 +39,7 @@ public class SoftReferenceContainer<T> extends ReferenceContainer<T> {
 	 * reference is not registered with any queue.
 	 * @param referent - object the new soft reference will refer to
 	 */
-	public SoftReferenceContainer(T referent) {
+	public SoftReferenceContainer(final T referent) {
 		super(new SoftReference<>(referent));
 	}
 

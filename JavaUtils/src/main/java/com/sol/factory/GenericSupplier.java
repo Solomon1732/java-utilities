@@ -18,8 +18,7 @@ package com.sol.factory;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
-
-import com.google.common.base.Supplier;
+import java.util.function.Supplier;
 
 /**
  * This is a generic supplier class. It is possible to use it as-is, but it's
@@ -49,7 +48,7 @@ public class GenericSupplier<K, T> {
 	 * @throws NullPointerException in case the key and/or the function is
 	 * {@code null}
 	 */
-	public Optional<Supplier<T>> put(K key, Supplier<T> supplier)
+	public Optional<Supplier<T>> put(final K key, final Supplier<T> supplier)
 			throws NullPointerException {
 
 		Objects.requireNonNull(key);
@@ -64,7 +63,7 @@ public class GenericSupplier<K, T> {
 	 * associated with key, or {@code null} if there was no mapping for key.
 	 * @throws NullPointerException if the key is {@code null}
 	 */
-	public Optional<Supplier<T>> remove(K key) {
+	public Optional<Supplier<T>> remove(final K key) {
 		Objects.requireNonNull(key);
 		return Optional.ofNullable(supplier.remove(key));
 	}
@@ -75,7 +74,7 @@ public class GenericSupplier<K, T> {
 	 * @return a new instance of the object produced by the stored supplier.
 	 * @throws NullPointerException if the key is {@code null}
 	 */
-	public T newInstance(K key) {
+	public T newInstance(final K key) {
 		return supplier.get(Objects.requireNonNull(key)).get();
 	}
 }

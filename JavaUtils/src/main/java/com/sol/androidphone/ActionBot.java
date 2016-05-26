@@ -72,13 +72,13 @@ public class ActionBot {
 	 * before starting the search
 	 * @return the element that is searched for
 	 */
-	public WebElement scrollDownToElement(String elementxPath,
-			long initialSleepingTime) {
+	public WebElement scrollDownToElement(final String elementxPath,
+			final long initialSleepingTime) {
 
 		Dimension pageSize = driver.manage().window().getSize();
-		int width = pageSize.width / 2;
-		int startingHeight = pageSize.height * 9 / 10;
-		int endingHeight = pageSize.height / 10;
+		final int width = pageSize.width / 2;
+		final int startingHeight = pageSize.height * 9 / 10;
+		final int endingHeight = pageSize.height / 10;
 
 		try {
 			Thread.sleep(initialSleepingTime);
@@ -102,9 +102,9 @@ public class ActionBot {
 	 * @param unit - unit for the waiting time (seconds, nanoseconds, minutes,
 	 * etc.)
 	 */
-	private void implicitwait(long time, TimeUnit unit) {
+	private void implicitwait(final long time, final TimeUnit unit) {
 		assert time >= 0 : "Time is a negetive value!";
-		assert null != unit;
+		assert null != unit : "unit is null!";
 		driver.manage().timeouts().implicitlyWait(time, unit);
 	}
 

@@ -39,7 +39,7 @@ public class WeakReferenceContainer<T> extends ReferenceContainer<T> {
 	 * reference is not registered with any queue.
 	 * @param referent - object the new soft reference will refer to
 	 */
-	public WeakReferenceContainer(T referent) {
+	public WeakReferenceContainer(final T referent) {
 		super(new WeakReference<>(referent));
 	}
 	
@@ -50,7 +50,7 @@ public class WeakReferenceContainer<T> extends ReferenceContainer<T> {
 	 * @param queue - the queue with which the reference is to be registered,
 	 * or {@code null} if registration is not required
 	 */
-	public WeakReferenceContainer(T referent, ReferenceQueue<? super T> queue) {
+	public WeakReferenceContainer(final T referent,final ReferenceQueue<? super T> queue) {
 		super(new WeakReference<>(referent, queue));
 	}
 }

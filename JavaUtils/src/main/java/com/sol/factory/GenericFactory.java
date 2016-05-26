@@ -18,8 +18,7 @@ package com.sol.factory;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
-
-import com.google.common.base.Function;
+import java.util.function.Function;
 
 /**
  * This is a generic factory class. It is possible to use it as-is, but it's
@@ -50,7 +49,7 @@ public class GenericFactory<K, T, R> {
 	 * @throws NullPointerException in case the key and/or the function is
 	 * {@code null}
 	 */
-	public Optional<Function<T, R>> put(K key, Function<T, R> function)
+	public Optional<Function<T, R>> put(final K key, final Function<T, R> function)
 			throws NullPointerException {
 
 		Objects.requireNonNull(function);
@@ -65,7 +64,7 @@ public class GenericFactory<K, T, R> {
 	 * associated with key, or {@code null} if there was no mapping for key.
 	 * @throws NullPointerException if the key is {@code null}
 	 */
-	public Optional<Function<T, R>> remove(K key)
+	public Optional<Function<T, R>> remove(final K key)
 			throws NullPointerException {
 		Objects.requireNonNull(key);
 		return Optional.ofNullable(factory.remove(key));
@@ -78,7 +77,7 @@ public class GenericFactory<K, T, R> {
 	 * @return a new instance of the object produced by the stored function.
 	 * @throws NullPointerException if the key is {@code null}
 	 */
-	public R newInstance(K key, T input) throws NullPointerException {
+	public R newInstance(final K key, final T input) throws NullPointerException {
 		return factory.get(Objects.requireNonNull(key)).apply(input);
 	}
 

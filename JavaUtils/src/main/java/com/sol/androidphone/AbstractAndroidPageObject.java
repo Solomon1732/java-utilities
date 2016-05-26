@@ -72,7 +72,7 @@ public abstract class AbstractAndroidPageObject {
 	 * @param unit - unit for the waiting time (seconds, nanoseconds, minutes,
 	 * etc.)
 	 */
-	protected void implicitwait(long time, TimeUnit unit) {
+	protected void implicitwait(final long time, final TimeUnit unit) {
 		assert time >= 0 : "Time is a negetive value!";
 		assert null != unit;
 		driver.manage().timeouts().implicitlyWait(time, unit);

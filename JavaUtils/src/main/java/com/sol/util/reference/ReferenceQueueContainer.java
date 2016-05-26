@@ -41,7 +41,7 @@ public class ReferenceQueueContainer<T> {
 	 * Constructs a new reference-object queue.
 	 * @param queue - reference queue to be contained
 	 */
-	public ReferenceQueueContainer(ReferenceQueue<T> queue) {
+	public ReferenceQueueContainer(final ReferenceQueue<T> queue) {
 		this.queue = Objects.requireNonNull(queue, "Queue is null");
 	}
 
@@ -71,7 +71,7 @@ public class ReferenceQueueContainer<T> {
 	 * is negative
 	 * @throws InterruptedException - If the timeout wait is interrupted
 	 */
-	public Reference<? extends T> remove(long timeout)
+	public Reference<? extends T> remove(final long timeout)
 			throws IllegalArgumentException, InterruptedException {
 		return queue.remove(timeout);
 	}
