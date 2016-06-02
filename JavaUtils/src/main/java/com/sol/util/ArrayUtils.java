@@ -28,9 +28,7 @@ import java.util.stream.IntStream;
  */
 public class ArrayUtils {
 
-	/*
-	 * Constructor. Class ArrayHandler is not instantiable.
-	 */
+	// Constructor. Class ArrayHandler is not instantiable.
 	private ArrayUtils() { }
 
 	/**
@@ -39,7 +37,7 @@ public class ArrayUtils {
 	 * {@code getArrayInstance(someArray, someArray.length)}
 	 * @param array - array used as the class for the new array.
 	 * @return - A newly allocated array with the same type as the input array.
-	 * @throws NullPointerException - if {@code array} is {@code null}
+	 * @throws NullPointerException if {@code array} is {@code null}
 	 */
 	public static <E> E[] getArrayInstance(final E[] array)
 			throws NullPointerException {
@@ -57,9 +55,9 @@ public class ArrayUtils {
 	 * original array
 	 * @param array - array used as the class for the new array.
 	 * @param length - length for the new array.
-	 * @return - A newly allocated array with the same type as the input array.
-	 * @throws NegativeArraySizeException - if {@code length} is negative
-	 * @throws NullPointerException - if {@code array} is {@code null}
+	 * @return A newly allocated array with the same type as the input array.
+	 * @throws NegativeArraySizeException if {@code length} is negative
+	 * @throws NullPointerException if {@code array} is {@code null}
 	 */
 	public static <E> E[] getArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException, NullPointerException {
@@ -177,7 +175,7 @@ public class ArrayUtils {
 	 * @param array - {@code Boolean} array to be unboxed
 	 * @return new array of primitive {@code boolean} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static boolean[] toPrimitiveArray(final Boolean[] array)
@@ -197,7 +195,7 @@ public class ArrayUtils {
 	 * @param array - {@code Byte} array to be unboxed
 	 * @return new array of primitive {@code byte} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static byte[] toPrimitiveArray(final Byte[] array)
@@ -217,7 +215,7 @@ public class ArrayUtils {
 	 * @param array - {@code short} array to be unboxed
 	 * @return new array of primitive {@code short} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static short[] toPrimitiveArray(final Short[] array)
@@ -237,7 +235,7 @@ public class ArrayUtils {
 	 * @param array - {@code Character} array to be unboxed
 	 * @return new array of primitive {@code char} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static char[] toPrimitiveArray(final Character[] array)
@@ -257,7 +255,7 @@ public class ArrayUtils {
 	 * @param array - {@code Integer} array to be unboxed
 	 * @return new array of primitive {@code int} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static int[] toPrimitiveArray(final Integer[] array)
@@ -276,7 +274,7 @@ public class ArrayUtils {
 	 * @param array - {@code Long} array to be unboxed
 	 * @return new array of primitive {@code long} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static long[] toPrimitiveArray(final Long[] array)
@@ -295,7 +293,7 @@ public class ArrayUtils {
 	 * @param array - {@code Float} array to be unboxed
 	 * @return new array of primitive {@code float} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static float[] toPrimitiveArray(final Float[] array)
@@ -315,7 +313,7 @@ public class ArrayUtils {
 	 * @param array - {@code Double} array to be unboxed
 	 * @return new array of primitive {@code double} containing the same
 	 * values in the same order as the original array
-	 * @throws NullPointerException - if {@code array == null} or one of the
+	 * @throws NullPointerException if {@code array == null} or one of the
 	 * elements is null
 	 */
 	public static double[] toPrimitiveArray(final Double[] array)
@@ -334,7 +332,7 @@ public class ArrayUtils {
 	 * @param array - {@code boolean} array to wrap
 	 * @return new array of {@code Booleans} containing the same elements as
 	 * as the original {@code boolean} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Boolean[] toPrimitiveWrapper(final boolean[] array)
 			throws NullPointerException {
@@ -352,7 +350,7 @@ public class ArrayUtils {
 	 * @param array - {@code byte} array to wrap
 	 * @return new array of {@code Bytes} containing the same elements as
 	 * as the original {@code byte} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Byte[] toPrimitiveWrapper(final byte[] array)
 			throws NullPointerException {
@@ -370,7 +368,7 @@ public class ArrayUtils {
 	 * @param array - {@code short} array to wrap
 	 * @return new array of {@code Shorts} containing the same elements as
 	 * as the original {@code short} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Short[] toPrimitiveWrapper(final short[] array)
 			throws NullPointerException {
@@ -388,7 +386,7 @@ public class ArrayUtils {
 	 * @param array - {@code char} array to wrap
 	 * @return new array of {@code Characters} containing the same elements as
 	 * as the original {@code char} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Character[] toPrimitiveWrapper(final char[] array)
 			throws NullPointerException {
@@ -406,7 +404,7 @@ public class ArrayUtils {
 	 * @param array - {@code int} array to wrap
 	 * @return new array of {@code Integers} containing the same elements as
 	 * as the original {@code int} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Integer[] toPrimitiveWrapper(final int[] array)
 			throws NullPointerException {
@@ -424,7 +422,7 @@ public class ArrayUtils {
 	 * @param array - {@code long} array to wrap
 	 * @return new array of {@code Longs} containing the same elements as
 	 * as the original {@code long} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Long[] toPrimitiveWrapper(final long[] array)
 			throws NullPointerException {
@@ -442,7 +440,7 @@ public class ArrayUtils {
 	 * @param array - {@code float} array to wrap
 	 * @return new array of {@code Floats} containing the same elements as
 	 * as the original {@code float} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Float[] toPrimitiveWrapper(final float[] array)
 			throws NullPointerException {
@@ -460,7 +458,7 @@ public class ArrayUtils {
 	 * @param array - {@code double} array to wrap
 	 * @return new array of {@code Doubles} containing the same elements as
 	 * as the original {@code double} array in the same order
-	 * @throws NullPointerException - if {@code array == null}
+	 * @throws NullPointerException if {@code array == null}
 	 */
 	public static Double[] toPrimitiveWrapper(final double[] array)
 			throws NullPointerException {
