@@ -26,12 +26,12 @@ import java.util.stream.IntStream;
  * @version %I%, %G%
  * @since Apr 29 2016
  */
-public class ArrayHandler {
+public class ArrayUtils {
 
 	/*
 	 * Constructor. Class ArrayHandler is not instantiable.
 	 */
-	private ArrayHandler() { }
+	private ArrayUtils() { }
 
 	/**
 	 * Receives an array and creates a new array with the same type and
@@ -41,8 +41,10 @@ public class ArrayHandler {
 	 * @return - A newly allocated array with the same type as the input array.
 	 * @throws NullPointerException - if {@code array} is {@code null}
 	 */
-	public static <E> E[] getArrayInstance(final E[] array) throws NullPointerException {
-		Class<?> arrayClass = Objects.requireNonNull(array).getClass().getComponentType();
+	public static <E> E[] getArrayInstance(final E[] array)
+			throws NullPointerException {
+		Class<?> arrayClass =
+				Objects.requireNonNull(array).getClass().getComponentType();
 
 		@SuppressWarnings("unchecked")
 		E[] newArray = (E[]) Array.newInstance(arrayClass, array.length);
