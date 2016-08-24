@@ -72,20 +72,20 @@ public class DriverFactory {
 		BrowserPropertyFile properties = BrowserPropertyFile.getInstance();
 
 		switch (driverType) {
-			case CHROME:
-				String pathToDriver =
-					properties.getProperty(BrowserPropertyConstants.PATH_TO_DRIVER);
-				System.setProperty("webdriver.chrome.driver", pathToDriver);
-				driver = new ChromeDriver();
-				break;
-			case FIREFOX:
-				driver = new FirefoxDriver();
-				break;
-			case HTMLUNIT:
-				driver = new HtmlUnitDriver();
-				break;
-			default:
-				throw new IllegalArgumentException("Illegal driver type");
+		case CHROME:
+			String pathToDriver =
+			properties.getProperty(BrowserPropertyConstants.PATH_TO_DRIVER);
+			System.setProperty("webdriver.chrome.driver", pathToDriver);
+			driver = new ChromeDriver();
+			break;
+		case FIREFOX:
+			driver = new FirefoxDriver();
+			break;
+		case HTMLUNIT:
+			driver = new HtmlUnitDriver();
+			break;
+		default:
+			throw new IllegalArgumentException("Illegal driver type");
 		}
 
 		String waitingTime = properties.getProperty(BrowserPropertyConstants.IMPLICITE_WAITING_TIME);

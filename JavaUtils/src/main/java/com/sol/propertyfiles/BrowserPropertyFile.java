@@ -124,4 +124,3 @@ public final class BrowserPropertyFile {
 		return property;
 	}
 }
-

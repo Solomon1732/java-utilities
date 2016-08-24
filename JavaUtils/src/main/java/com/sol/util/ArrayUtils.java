@@ -62,14 +62,334 @@ public final class ArrayUtils {
 	public static <E> E[] getArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException, NullPointerException {
 
+		// *Unneeded* but better to detect a negative size at this stage rather
+		// than in Array.newInstance, since the whole class is a JNI wrapper
 		if(length < 0) {
 			throw new NegativeArraySizeException();
 		}
-		Class<?> arrayClass = Objects.requireNonNull(array).getClass().getComponentType();
+		Class<?> arrayClass =
+				Objects.requireNonNull(array).getClass().getComponentType();
 
 		@SuppressWarnings("unchecked")
 		E[] newArray = (E[]) Array.newInstance(arrayClass, length);
 
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Booleans} containing the same elements as
+	 * the original {@code boolean} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code boolean} array to wrap
+	 * @return new array of {@code Booleans} containing the same elements as
+	 * as the original {@code boolean} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Boolean[] ParallelToBoxedArray(final boolean[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Boolean[] newArray = new Boolean[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Boolean.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Bytes} containing the same elements as
+	 * the original {@code byte} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code byte} array to wrap
+	 * @return new array of {@code Bytes} containing the same elements as
+	 * as the original {@code byte} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Byte[] ParallelToBoxedArray(final byte[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Byte[] newArray = new Byte[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Byte.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Shorts} containing the same elements as
+	 * the original {@code short} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code short} array to wrap
+	 * @return new array of {@code Shorts} containing the same elements as
+	 * as the original {@code short} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Short[] ParallelToBoxedArray(final short[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Short[] newArray = new Short[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Short.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Characters} containing the same elements as
+	 * the original {@code char} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code char} array to wrap
+	 * @return new array of {@code Characters} containing the same elements as
+	 * as the original {@code char} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Character[] ParallelToBoxedArray(final char[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Character[] newArray = new Character[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Character.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Integers} containing the same elements as
+	 * the original {@code int} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code int} array to wrap
+	 * @return new array of {@code Integers} containing the same elements as
+	 * as the original {@code int} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Integer[] ParallelToBoxedArray(final int[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Integer[] newArray = new Integer[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Integer.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Longs} containing the same elements as
+	 * the original {@code long} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code long} array to wrap
+	 * @return new array of {@code Longs} containing the same elements as
+	 * as the original {@code long} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Long[] ParallelToBoxedArray(final long[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Long[] newArray = new Long[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Long.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Floats} containing the same elements as
+	 * the original {@code float} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code float} array to wrap
+	 * @return new array of {@code Floats} containing the same elements as
+	 * as the original {@code float} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Float[] ParallelToBoxedArray(final float[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Float[] newArray = new Float[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Float.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Doubles} containing the same elements as
+	 * the original {@code double} array in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code double} array to wrap
+	 * @return new array of {@code Doubles} containing the same elements as
+	 * as the original {@code double} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Double[] ParallelToBoxedArray(final double[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Double[] newArray = new Double[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> Double.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Boolean} and returns a new array of {@code boolean}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Boolean} array to be unboxed
+	 * @return new array of primitive {@code boolean} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static boolean[] ParallelToPrimitiveArray(final Boolean[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		boolean[] newArray = new boolean[array.length];
+
+		IntStream.range(0, array.length).parallel()
+		.forEach(index -> newArray[index] = array[index].booleanValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Byte} and returns a new array of {@code byte}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Byte} array to be unboxed
+	 * @return new array of primitive {@code byte} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static byte[] ParallelToPrimitiveArray(final Byte[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		byte[] newArray = new byte[array.length];
+
+		IntStream.range(0, array.length).parallel()
+		.forEach(index -> newArray[index] = array[index].byteValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Short} and returns a new array of {@code short}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code short} array to be unboxed
+	 * @return new array of primitive {@code short} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static short[] ParallelToPrimitiveArray(final Short[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		short[] newArray = new short[array.length];
+
+		IntStream.range(0, array.length).parallel()
+		.forEach(index -> newArray[index] = array[index].shortValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Character} and returns a new array of {@code char}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Character} array to be unboxed
+	 * @return new array of primitive {@code char} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static char[] ParallelToPrimitiveArray(final Character[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		char[] newArray = new char[array.length];
+
+		IntStream.range(0, array.length).parallel()
+		.forEach(index -> newArray[index] = array[index].charValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Integer} and returns a new array of {@code int}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Integer} array to be unboxed
+	 * @return new array of primitive {@code int} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static int[] ParallelToPrimitiveArray(final Integer[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		int[] newArray = new int[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> array[index].intValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Long} and returns a new array of {@code long}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Long} array to be unboxed
+	 * @return new array of primitive {@code long} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static long[] ParallelToPrimitiveArray(final Long[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		long[] newArray = new long[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> array[index].longValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Float} and returns a new array of {@code float}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Float} array to be unboxed
+	 * @return new array of primitive {@code float} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static float[] ParallelToPrimitiveArray(final Float[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		float[] newArray = new float[array.length];
+
+		IntStream.range(0, array.length).parallel()
+		.forEach(index -> newArray[index] = array[index].floatValue());
+		return newArray;
+	}
+
+	/**
+	 * Takes an array of {@code Double} and returns a new array of {@code double}
+	 * containing the same values (unboxed) in the same order. The new array is
+	 * set in parallel
+	 * @param array - {@code Double} array to be unboxed
+	 * @return new array of primitive {@code double} containing the same
+	 * values in the same order as the original array
+	 * @throws NullPointerException if {@code array == null} or one of the
+	 * elements is null
+	 */
+	public static double[] ParallelToPrimitiveArray(final Double[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		double[] newArray = new double[array.length];
+
+		Arrays.parallelSetAll(newArray, index -> array[index].doubleValue());
 		return newArray;
 	}
 
@@ -170,6 +490,150 @@ public final class ArrayUtils {
 	}
 
 	/**
+	 * Returns an array of {@code Booleans} containing the same elements as
+	 * the original {@code boolean} array in the same order
+	 * @param array - {@code boolean} array to wrap
+	 * @return new array of {@code Booleans} containing the same elements as
+	 * as the original {@code boolean} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Boolean[] toBoxedArray(final boolean[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Boolean[] newArray = new Boolean[array.length];
+
+		Arrays.setAll(newArray, index -> Boolean.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Bytes} containing the same elements as
+	 * the original {@code byte} array in the same order
+	 * @param array - {@code byte} array to wrap
+	 * @return new array of {@code Bytes} containing the same elements as
+	 * as the original {@code byte} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Byte[] toBoxedArray(final byte[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Byte[] newArray = new Byte[array.length];
+
+		Arrays.setAll(newArray, index -> Byte.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Shorts} containing the same elements as
+	 * the original {@code short} array in the same order
+	 * @param array - {@code short} array to wrap
+	 * @return new array of {@code Shorts} containing the same elements as
+	 * as the original {@code short} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Short[] toBoxedArray(final short[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Short[] newArray = new Short[array.length];
+
+		Arrays.setAll(newArray, index -> Short.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Characters} containing the same elements as
+	 * the original {@code char} array in the same order
+	 * @param array - {@code char} array to wrap
+	 * @return new array of {@code Characters} containing the same elements as
+	 * as the original {@code char} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Character[] toBoxedArray(final char[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Character[] newArray = new Character[array.length];
+
+		Arrays.setAll(newArray, index -> Character.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Integers} containing the same elements as
+	 * the original {@code int} array in the same order
+	 * @param array - {@code int} array to wrap
+	 * @return new array of {@code Integers} containing the same elements as
+	 * as the original {@code int} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Integer[] toBoxedArray(final int[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Integer[] newArray = new Integer[array.length];
+
+		Arrays.setAll(newArray, index -> Integer.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Longs} containing the same elements as
+	 * the original {@code long} array in the same order
+	 * @param array - {@code long} array to wrap
+	 * @return new array of {@code Longs} containing the same elements as
+	 * as the original {@code long} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Long[] toBoxedArray(final long[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Long[] newArray = new Long[array.length];
+
+		Arrays.setAll(newArray, index -> Long.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Floats} containing the same elements as
+	 * the original {@code float} array in the same order
+	 * @param array - {@code float} array to wrap
+	 * @return new array of {@code Floats} containing the same elements as
+	 * as the original {@code float} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Float[] toPrimitiveWrapper(final float[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Float[] newArray = new Float[array.length];
+
+		Arrays.setAll(newArray, index -> Float.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
+	 * Returns an array of {@code Doubles} containing the same elements as
+	 * the original {@code double} array in the same order
+	 * @param array - {@code double} array to wrap
+	 * @return new array of {@code Doubles} containing the same elements as
+	 * as the original {@code double} array in the same order
+	 * @throws NullPointerException if {@code array == null}
+	 */
+	public static Double[] toBoxedArray(final double[] array)
+			throws NullPointerException {
+
+		Objects.requireNonNull(array);
+		Double[] newArray = new Double[array.length];
+
+		Arrays.setAll(newArray, index -> Double.valueOf(array[index]));
+		return newArray;
+	}
+
+	/**
 	 * Takes an array of {@code Boolean} and returns a new array of {@code boolean}
 	 * containing the same values in the same order.
 	 * @param array - {@code Boolean} array to be unboxed
@@ -184,7 +648,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		boolean[] newArray = new boolean[array.length];
 
-		parallelIntStream(0, array.length)
+		IntStream.range(0, array.length)
 		.forEach(index -> newArray[index] = array[index].booleanValue());
 		return newArray;
 	}
@@ -204,7 +668,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		byte[] newArray = new byte[array.length];
 
-		parallelIntStream(0, array.length)
+		IntStream.range(0, array.length)
 		.forEach(index -> newArray[index] = array[index].byteValue());
 		return newArray;
 	}
@@ -224,7 +688,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		short[] newArray = new short[array.length];
 
-		parallelIntStream(0, array.length)
+		IntStream.range(0, array.length)
 		.forEach(index -> newArray[index] = array[index].shortValue());
 		return newArray;
 	}
@@ -244,7 +708,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		char[] newArray = new char[array.length];
 
-		parallelIntStream(0, array.length)
+		IntStream.range(0, array.length)
 		.forEach(index -> newArray[index] = array[index].charValue());
 		return newArray;
 	}
@@ -264,7 +728,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		int[] newArray = new int[array.length];
 
-		Arrays.parallelSetAll(newArray, index -> array[index].intValue());
+		Arrays.setAll(newArray, index -> array[index].intValue());
 		return newArray;
 	}
 
@@ -283,7 +747,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		long[] newArray = new long[array.length];
 
-		Arrays.parallelSetAll(newArray, index -> array[index].longValue());
+		Arrays.setAll(newArray, index -> array[index].longValue());
 		return newArray;
 	}
 
@@ -302,7 +766,7 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		float[] newArray = new float[array.length];
 
-		parallelIntStream(0, array.length)
+		IntStream.range(0, array.length)
 		.forEach(index -> newArray[index] = array[index].floatValue());
 		return newArray;
 	}
@@ -322,170 +786,8 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		double[] newArray = new double[array.length];
 
-		Arrays.parallelSetAll(newArray, index -> array[index].doubleValue());
+		Arrays.setAll(newArray, index -> array[index].doubleValue());
 		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Booleans} containing the same elements as
-	 * the original {@code boolean} array in the same order
-	 * @param array - {@code boolean} array to wrap
-	 * @return new array of {@code Booleans} containing the same elements as
-	 * as the original {@code boolean} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Boolean[] toPrimitiveWrapper(final boolean[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Boolean[] newArray = new Boolean[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Boolean.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Bytes} containing the same elements as
-	 * the original {@code byte} array in the same order
-	 * @param array - {@code byte} array to wrap
-	 * @return new array of {@code Bytes} containing the same elements as
-	 * as the original {@code byte} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Byte[] toPrimitiveWrapper(final byte[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Byte[] newArray = new Byte[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Byte.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Shorts} containing the same elements as
-	 * the original {@code short} array in the same order
-	 * @param array - {@code short} array to wrap
-	 * @return new array of {@code Shorts} containing the same elements as
-	 * as the original {@code short} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Short[] toPrimitiveWrapper(final short[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Short[] newArray = new Short[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Short.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Characters} containing the same elements as
-	 * the original {@code char} array in the same order
-	 * @param array - {@code char} array to wrap
-	 * @return new array of {@code Characters} containing the same elements as
-	 * as the original {@code char} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Character[] toPrimitiveWrapper(final char[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Character[] newArray = new Character[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Character.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Integers} containing the same elements as
-	 * the original {@code int} array in the same order
-	 * @param array - {@code int} array to wrap
-	 * @return new array of {@code Integers} containing the same elements as
-	 * as the original {@code int} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Integer[] toPrimitiveWrapper(final int[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Integer[] newArray = new Integer[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Integer.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Longs} containing the same elements as
-	 * the original {@code long} array in the same order
-	 * @param array - {@code long} array to wrap
-	 * @return new array of {@code Longs} containing the same elements as
-	 * as the original {@code long} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Long[] toPrimitiveWrapper(final long[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Long[] newArray = new Long[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Long.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Floats} containing the same elements as
-	 * the original {@code float} array in the same order
-	 * @param array - {@code float} array to wrap
-	 * @return new array of {@code Floats} containing the same elements as
-	 * as the original {@code float} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Float[] toPrimitiveWrapper(final float[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Float[] newArray = new Float[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Float.valueOf(array[index]));
-		return newArray;
-	}
-
-	/**
-	 * Returns an array of {@code Doubles} containing the same elements as
-	 * the original {@code double} array in the same order
-	 * @param array - {@code double} array to wrap
-	 * @return new array of {@code Doubles} containing the same elements as
-	 * as the original {@code double} array in the same order
-	 * @throws NullPointerException if {@code array == null}
-	 */
-	public static Double[] toPrimitiveWrapper(final double[] array)
-			throws NullPointerException {
-
-		Objects.requireNonNull(array);
-		Double[] newArray = new Double[array.length];
-
-		Arrays.parallelSetAll(newArray, index -> Double.valueOf(array[index]));
-		return newArray;
-	}
-
-	/*
-	 * Returns a new sequential IntStream from start (inclusive) to end
-	 * (exclusive)
-	 */
-	private static IntStream newIntStream(final int startInclusive,
-			final int endExclusive) {
-		return IntStream.range(startInclusive, endExclusive);
-	}
-
-	/*
-	 * Returns a new parallel IntStream from start (inclusive) to end
-	 * (exclusive)
-	 */
-	private static IntStream parallelIntStream(final int startInclusive,
-			final int endExclusive) {
-		return newIntStream(startInclusive, endExclusive).parallel();
 	}
 
 }
