@@ -32,7 +32,7 @@ import java.util.Optional;
  * @param <T> - type of contained objects
  * @see Reference
  */
-public class WeakReferenceContainer<T> extends ReferenceContainer<T> {
+public final class WeakReferenceContainer<T> extends ReferenceContainer<T> {
 
 	/**
 	 * Creates a new weak reference that refers to the given object. The new

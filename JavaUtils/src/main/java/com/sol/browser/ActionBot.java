@@ -35,7 +35,7 @@ import com.sol.propertyfiles.BrowserPropertyFile;
  * @version %I%, %G%
  * @since Dec 22 2015
  */
-public class ActionBot {
+public final class ActionBot {
 	private final WebDriver driver;
 	private static final BrowserPropertyFile properties = BrowserPropertyFile.getInstance();
 

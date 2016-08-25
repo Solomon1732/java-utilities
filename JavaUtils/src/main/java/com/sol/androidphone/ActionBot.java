@@ -28,7 +28,7 @@ import io.appium.java_client.android.AndroidDriver;
  * @author Shlomi Reuveni
  * @version %I%, %G%
  */
-public class ActionBot {
+public final class ActionBot {
 	/**
 	 * An {@link AndroidDriver} instance for the use of the class
 	 */

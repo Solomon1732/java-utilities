@@ -32,7 +32,7 @@ import java.util.Optional;
  * @param <T> - type of contained objects
  * @see Reference
  */
-public class SoftReferenceContainer<T> extends ReferenceContainer<T> {
+public final class SoftReferenceContainer<T> extends ReferenceContainer<T> {
 
 	/**
 	 * Creates a new soft reference that refers to the given object. The new

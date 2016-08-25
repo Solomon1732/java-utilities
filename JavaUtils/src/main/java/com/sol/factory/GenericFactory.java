@@ -32,7 +32,7 @@ import java.util.function.Function;
  * @param <T> - input type of the function
  * @param <R> - output type of the function
  */
-public class GenericFactory<K, T, R> {
+public final class GenericFactory<K, T, R> {
 	//The hashmap containing the functions
 	private final HashMap<K, Function<T, R>> factory = new HashMap<>();
 

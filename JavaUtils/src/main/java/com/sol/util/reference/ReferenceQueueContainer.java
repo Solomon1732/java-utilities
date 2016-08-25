@@ -31,7 +31,7 @@ import java.util.Optional;
  * @version %I%, %G%
  * @param <T> - type of contained objects
  */
-public class ReferenceQueueContainer<T> {
+public final class ReferenceQueueContainer<T> {
 	/**
 	 * This is a stored {@code ReferenceQueue} object
 	 */

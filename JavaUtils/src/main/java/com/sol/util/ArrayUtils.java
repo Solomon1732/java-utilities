@@ -503,7 +503,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Boolean[] newArray = new Boolean[array.length];
 
-		Arrays.setAll(newArray, index -> Boolean.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Boolean.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -521,7 +524,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Byte[] newArray = new Byte[array.length];
 
-		Arrays.setAll(newArray, index -> Byte.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Byte.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -539,7 +545,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Short[] newArray = new Short[array.length];
 
-		Arrays.setAll(newArray, index -> Short.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Short.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -557,7 +566,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Character[] newArray = new Character[array.length];
 
-		Arrays.setAll(newArray, index -> Character.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Character.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -575,7 +587,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Integer[] newArray = new Integer[array.length];
 
-		Arrays.setAll(newArray, index -> Integer.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Integer.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -593,7 +608,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Long[] newArray = new Long[array.length];
 
-		Arrays.setAll(newArray, index -> Long.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Long.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -605,13 +623,16 @@ public final class ArrayUtils {
 	 * as the original {@code float} array in the same order
 	 * @throws NullPointerException if {@code array == null}
 	 */
-	public static Float[] toPrimitiveWrapper(final float[] array)
+	public static Float[] toBoxedArray(final float[] array)
 			throws NullPointerException {
 
 		Objects.requireNonNull(array);
 		Float[] newArray = new Float[array.length];
 
-		Arrays.setAll(newArray, index -> Float.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Float.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -629,7 +650,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		Double[] newArray = new Double[array.length];
 
-		Arrays.setAll(newArray, index -> Double.valueOf(array[index]));
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = Double.valueOf(array[i]);
+		}
+
 		return newArray;
 	}
 
@@ -648,8 +672,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		boolean[] newArray = new boolean[array.length];
 
-		IntStream.range(0, array.length)
-		.forEach(index -> newArray[index] = array[index].booleanValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -668,8 +694,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		byte[] newArray = new byte[array.length];
 
-		IntStream.range(0, array.length)
-		.forEach(index -> newArray[index] = array[index].byteValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -688,8 +716,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		short[] newArray = new short[array.length];
 
-		IntStream.range(0, array.length)
-		.forEach(index -> newArray[index] = array[index].shortValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -708,8 +738,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		char[] newArray = new char[array.length];
 
-		IntStream.range(0, array.length)
-		.forEach(index -> newArray[index] = array[index].charValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -728,7 +760,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		int[] newArray = new int[array.length];
 
-		Arrays.setAll(newArray, index -> array[index].intValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -747,7 +782,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		long[] newArray = new long[array.length];
 
-		Arrays.setAll(newArray, index -> array[index].longValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -766,8 +804,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		float[] newArray = new float[array.length];
 
-		IntStream.range(0, array.length)
-		.forEach(index -> newArray[index] = array[index].floatValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 
@@ -786,7 +826,10 @@ public final class ArrayUtils {
 		Objects.requireNonNull(array);
 		double[] newArray = new double[array.length];
 
-		Arrays.setAll(newArray, index -> array[index].doubleValue());
+		for (int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+
 		return newArray;
 	}
 

@@ -31,7 +31,7 @@ import java.util.function.Supplier;
  * @param <K> - key that is associated with the instance function
  * @param <T> - output of the supplier
  */
-public class GenericSupplier<K, T> {
+public final class GenericSupplier<K, T> {
 	//The hashmap containing the suppliers
 	private final HashMap<K, Supplier<T>> supplier = new HashMap<>();
 

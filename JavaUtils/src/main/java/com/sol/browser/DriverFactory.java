@@ -34,7 +34,7 @@ import com.sol.propertyfiles.BrowserPropertyFile;
  * @version %I%, %G%
  * @since Dec 23 2015
  */
-public class DriverFactory {
+public final class DriverFactory {
 	/**
 	 * An Enum for the DriverFactory class. Used to determine the WebDriver instance
 	 * type received from the factory
