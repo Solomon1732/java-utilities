@@ -151,14 +151,14 @@ public final class ActionBot {
 		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
 
 		//The explicit waiting
-		(new WebDriverWait(driver, waitingTimeInMillis)).until(expectedCondition);
-		
+		new WebDriverWait(driver, waitingTimeInMillis).until(expectedCondition);
+
 		//Sets the implicit wait back at the property time set in the properties file
 		String waitingTime = properties.getProperty(BrowserPropertyConstants
 				.IMPLICITE_WAITING_TIME);
 
 		driver.manage().timeouts().implicitlyWait(Long.parseLong(waitingTime),
 				TimeUnit.SECONDS);
-
 	}
+
 }

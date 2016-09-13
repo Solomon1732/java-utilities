@@ -46,7 +46,6 @@ public abstract class ReferenceContainer<T> {
 	 * @param reference - the reference to be stored
 	 */
 	protected ReferenceContainer(final Reference<T> reference) {
-		assert null != reference : "This reference object is null!";
 		this.reference = Objects.requireNonNull(reference);
 	}
 
@@ -93,4 +92,10 @@ public abstract class ReferenceContainer<T> {
 		return reference.isEnqueued();
 	}
 
+	/**
+	 * {@code ReferenceContainer} classes cannot have finalize methods.
+	 */
+	@Override
+	protected final void finalize() { }
+	
 }

@@ -18,6 +18,7 @@ package com.sol.util.reference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -40,7 +41,7 @@ public final class SoftReferenceContainer<T> extends ReferenceContainer<T> {
 	 * @param referent - object the new soft reference will refer to
 	 */
 	public SoftReferenceContainer(final T referent) {
-		super(new SoftReference<>(referent));
+		super(new SoftReference<>(Objects.requireNonNull(referent)));
 	}
 
 	/**
@@ -51,7 +52,8 @@ public final class SoftReferenceContainer<T> extends ReferenceContainer<T> {
 	 * or {@code null} if registration is not required
 	 */
 	public SoftReferenceContainer(T referent, ReferenceQueue<? super T> queue) {
-		super(new SoftReference<>(referent, queue));
+		super(new SoftReference<>(Objects.requireNonNull(referent),
+				Objects.requireNonNull(queue)));
 	}
 
 }
