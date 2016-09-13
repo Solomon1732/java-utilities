@@ -26,10 +26,10 @@ import java.util.stream.IntStream;
  * @version %I%, %G%
  * @since Apr 29 2016
  */
-public final class ArrayUtils {
+public final class ArrayUtililities {
 
 	// Constructor. Class ArrayHandler is not instantiable.
-	private ArrayUtils() { }
+	private ArrayUtililities() { }
 
 	/**
 	 * Receives an array and creates a new array with the same type and

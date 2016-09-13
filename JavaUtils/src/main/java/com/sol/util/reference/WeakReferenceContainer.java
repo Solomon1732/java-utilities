@@ -18,6 +18,7 @@ package com.sol.util.reference;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -40,9 +41,9 @@ public final class WeakReferenceContainer<T> extends ReferenceContainer<T> {
 	 * @param referent - object the new soft reference will refer to
 	 */
 	public WeakReferenceContainer(final T referent) {
-		super(new WeakReference<>(referent));
+		super(new WeakReference<>(Objects.requireNonNull(referent)));
 	}
-	
+
 	/**
 	 * Creates a new weak reference that refers to the given object and is
 	 * registered with the given queue.
@@ -51,6 +52,8 @@ public final class WeakReferenceContainer<T> extends ReferenceContainer<T> {
 	 * or {@code null} if registration is not required
 	 */
 	public WeakReferenceContainer(final T referent,final ReferenceQueue<? super T> queue) {
-		super(new WeakReference<>(referent, queue));
+		super(new WeakReference<>(Objects.requireNonNull(referent),
+				Objects.requireNonNull(queue)));
 	}
+
 }
