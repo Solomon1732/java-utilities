@@ -37,7 +37,7 @@ public final class ArrayUtililities {
 	 * {@code #getArrayInstance(someArray, someArray.length)}
 	 * @param array - array used as the class for the new array.
 	 * @return - A newly allocated array with the same type as the input array.
-	 * Note that the new array is not initialized.
+	 * Note that the new array is initialized with nulls.
 	 * @throws NullPointerException if {@code array} is {@code null}
 	 */
 	public static <E> E[] getArrayInstance(final E[] array)
@@ -57,6 +57,7 @@ public final class ArrayUtililities {
 	 * @param array - array used as the class for the new array.
 	 * @param length - length for the new array.
 	 * @return A newly allocated array with the same type as the input array.
+	 * Note that the new array is initialized with nulls.
 	 * Note that the new array is not initialized.
 	 * @throws NegativeArraySizeException if {@code length} is negative
 	 * @throws NullPointerException if {@code array} is {@code null}
