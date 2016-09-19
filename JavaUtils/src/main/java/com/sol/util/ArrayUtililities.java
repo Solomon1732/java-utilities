@@ -17,7 +17,7 @@ package com.sol.util;
 
 import java.lang.reflect.Array;
 //import java.util.Arrays;
-import java.util.Objects;
+//import java.util.Objects;
 //import java.util.stream.IntStream;
 
 /**
@@ -42,11 +42,10 @@ public final class ArrayUtililities {
 	 */
 	public static <E> E[] getArrayInstance(final E[] array)
 			throws NullPointerException {
-		Class<?> arrayClass =
-				Objects.requireNonNull(array).getClass().getComponentType();
+		Class<?> arrayComponentClass = array.getClass().getComponentType();
 
 		@SuppressWarnings("unchecked")
-		E[] newArray = (E[]) Array.newInstance(arrayClass, array.length);
+		E[] newArray = (E[]) Array.newInstance(arrayComponentClass, array.length);
 
 		return newArray;
 	}
@@ -58,7 +57,6 @@ public final class ArrayUtililities {
 	 * @param length - length for the new array.
 	 * @return A newly allocated array with the same type as the input array.
 	 * Note that the new array is initialized with nulls.
-	 * Note that the new array is not initialized.
 	 * @throws NegativeArraySizeException if {@code length} is negative
 	 * @throws NullPointerException if {@code array} is {@code null}
 	 */
@@ -70,11 +68,10 @@ public final class ArrayUtililities {
 		if(length < 0) {
 			throw new NegativeArraySizeException();
 		}
-		Class<?> arrayClass =
-				Objects.requireNonNull(array).getClass().getComponentType();
+		Class<?> arrayComponentClass = array.getClass().getComponentType();
 
 		@SuppressWarnings("unchecked")
-		E[] newArray = (E[]) Array.newInstance(arrayClass, length);
+		E[] newArray = (E[]) Array.newInstance(arrayComponentClass, length);
 
 		return newArray;
 	}
