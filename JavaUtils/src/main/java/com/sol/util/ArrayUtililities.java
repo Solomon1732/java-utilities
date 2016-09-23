@@ -70,8 +70,8 @@ public final class ArrayUtililities {
 
 	private static <E> E[] createArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException {
-		assert Objects.isNull(array) : "Array is null";
-		assert length > 0 : "Array length is negative";
+		assert Objects.nonNull(array) : "Array is null";
+		assert length >= 0 : "Array length is negative";
 
 		final Class<?> arrayComponentClass = array.getClass().getComponentType();
 
