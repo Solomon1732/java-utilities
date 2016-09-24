@@ -36,7 +36,7 @@ public final class ArrayUtililities {
 	 * Receives an array and creates a new array with the same type and
 	 * length. Similar to
 	 * {@code #getArrayInstance(someArray, someArray.length)}
-	 * @param array - array used as the class for the new array.
+	 * @param array - array used to get the class for the new array.
 	 * @return - A newly allocated array with the same type as the input array.
 	 * Note that the new array is initialized with nulls.
 	 * @throws NullPointerException if {@code array} is {@code null}
@@ -49,7 +49,7 @@ public final class ArrayUtililities {
 	/**
 	 * Receives an array and creates a new array with the same type as the
 	 * original array
-	 * @param array - array used as the class for the new array.
+	 * @param array - array used to get the class for the new array.
 	 * @param length - length for the new array.
 	 * @return A newly allocated array with the same type as the input array.
 	 * Note that the new array is initialized with nulls.
@@ -68,6 +68,15 @@ public final class ArrayUtililities {
 		return createArrayInstance(Objects.requireNonNull(array), length);
 	}
 
+	/**
+	 * Creates an array instance with the same class as the source array, with
+	 * length determined by the input.
+	 * @param array - array used to get the class for the new array.
+	 * @param length - length for the new array.
+	 * @return A newly allocated array with the same type as the input array.
+	 * Note that the new array is initialized with nulls.
+	 * @throws NegativeArraySizeException if {@code length} is negative
+	 */
 	private static <E> E[] createArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException {
 		assert Objects.nonNull(array) : "Array is null";

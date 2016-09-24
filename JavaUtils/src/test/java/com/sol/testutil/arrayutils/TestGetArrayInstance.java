@@ -1,7 +1,5 @@
 package com.sol.testutil.arrayutils;
 
-import java.util.Objects;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.sol.util.ArrayUtililities;
@@ -22,8 +20,6 @@ public class TestGetArrayInstance {
 
 	@Test(description = "Test getArrayLength(array) with an empty array")
 	public void testEmptyArray() {
-		System.out.println("Is empty null: " + Objects.isNull(emptyArray));
-
 		String[] newArray = ArrayUtililities.getArrayInstance(emptyArray);
 
 		Assert.assertEquals(newArray.length, emptyArray.length);
