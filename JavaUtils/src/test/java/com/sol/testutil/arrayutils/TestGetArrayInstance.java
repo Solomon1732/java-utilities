@@ -5,10 +5,10 @@ import org.testng.annotations.Test;
 import com.sol.util.ArrayUtililities;
 
 public class TestGetArrayInstance {
-	final String[] regularArray = {"This", "array", "is", "not", "empty"};
-	final String[] emptyArray = new String[0];
-	final int positiveLength = 10;
-	final int negativeLength = -1;
+	private final String[] regularArray = {"This", "array", "is", "not", "empty"};
+	private final String[] emptyArray = new String[0];
+	private final int positiveLength = 10;
+	private final int negativeLength = -1;
 
 	@Test(description = "Test getArrayLength(array) with a regular array")
 	public void testRegularArray() {
