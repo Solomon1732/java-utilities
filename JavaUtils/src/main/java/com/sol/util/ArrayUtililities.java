@@ -59,7 +59,7 @@ public final class ArrayUtililities {
 	public static <E> E[] getArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException, NullPointerException {
 		/*
-		 * *Unneeded* but better to detect a negative size at this stage rather
+		 * "Unneeded" but better to detect a negative size at this stage rather
 		 * than in Array.newInstance, since the whole class is a JNI wrapper 
 		 */		 
 		if(length < 0) {
@@ -79,7 +79,7 @@ public final class ArrayUtililities {
 	 */
 	private static <E> E[] createArrayInstance(final E[] array, final int length)
 			throws NegativeArraySizeException {
-		assert Objects.nonNull(array) : "Array is null";
+		assert null != array : "Array is null";
 		assert length >= 0 : "Array length is negative";
 
 		final Class<?> arrayComponentClass = array.getClass().getComponentType();
