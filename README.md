@@ -1,4 +1,5 @@
 # java-utilities
+## This repository is no longer maintained!!!
 A repository holding various utilities for Java
 
 I have a Maven project called JavaUtilities in one of my other repositories - infinity-labs-repository - and decided it deserved it's own
